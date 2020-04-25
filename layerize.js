@@ -589,13 +589,13 @@ function processFile(fileName, data) {
             ligatures.push({unicodes: unicodes, components: layers});
             // create the placeholder glyph for the ligature (to be mapped to a set of color layers)
             fs.writeFileSync(targetDir + "/glyphs/u" + unicodes.join("_") + ".svg",
-                             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64"></svg>');
+                             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><rect width="36" height="36"/></svg>');
             codepoints.push('"u' + unicodes.join("_") + '": -1');
         }
         unicodes.forEach(function(u) {
             // make sure we have a placeholder glyph for the individual character, or for each component of the ligature
             fs.writeFileSync(targetDir + "/glyphs/u" + u + ".svg",
-                             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" enable-background="new 0 0 64 64"></svg>');
+                             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><rect width="36" height="36"/></svg>');
             codepoints.push('"u' + u + '": ' + parseInt(u, 16));
         });
     });
